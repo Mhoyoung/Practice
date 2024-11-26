@@ -1,3 +1,4 @@
+//Inpa Dev (ì¸íŒŒ_) ì˜ ë„ì›€ì„ ë°›ì•„ ë§Œë“¤ì—ˆë‹¤
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,7 +39,7 @@ int main()
 	char player[2] = "2";
 	
 	
-	int map[20][20] =//[¼¼·Î][°¡·Î] [cy][cx] 
+	int map[20][20] =//[ì„¸ë¡œ][ê°€ë¡œ] [cy][cx] 
 	{
 		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 		1,0,0,0,0,0,0,0,4,1,0,0,0,1,0,0,0,0,3,1,
@@ -63,64 +64,64 @@ int main()
 		
 	};
 	
-	int input; //¹æÇâÅ° ÀÔ·Â ¹ŞÀ» intÇü º¯¼ö charÇü ¾Æ´Ô! 
+	int input; //ë°©í–¥í‚¤ ì…ë ¥ ë°›ì„ intí˜• ë³€ìˆ˜ charí˜• ì•„ë‹˜! 
 	static int cx=36,cy=18,score,died;
-	//¸Ê »ı¼º 
+	//ë§µ ìƒì„± 
 	map_ptf(map,20,20);
-	//ÃÖÃÊ ÇÃ·¹ÀÌ¾î À§Ä¡ Ãâ·Â 
+	//ìµœì´ˆ í”Œë ˆì´ì–´ ìœ„ì¹˜ ì¶œë ¥ 
 	gotoxy(cx,cy);
 	LIGHT_WHITE printf("%s", player);
 	
-	//¸ñÂ÷
+	//ëª©ì°¨
 	gotoxy(43,8);
-	LIGHT_GREEN printf("500Á¡ ÀÌ»ó Åë°ú");
+	LIGHT_GREEN printf("500ì  ì´ìƒ í†µê³¼");
 	gotoxy(43,12);
-	BLUE printf("    Á¶ÀÛÅ°");
+	BLUE printf("    ì¡°ì‘í‚¤");
 	gotoxy(45,14);
-	BLUE printf("    ¡è");
+	BLUE printf("    â†‘");
 	gotoxy(45,16);
-	BLUE printf("¡ç  ¡é  ¡æ");
+	BLUE printf("â†  â†“  â†’");
 	
-	//¹Ì·Î µµÂøÁöÁ¡ ÁÂÇ¥¿Í ÇÃ·¹ÀÌ¾îcx,cyÁÂÇ¥°¡ °°À»°æ¿ì ·çÇÁ¹® ÇØÁ¦	
+	//ë¯¸ë¡œ ë„ì°©ì§€ì  ì¢Œí‘œì™€ í”Œë ˆì´ì–´cx,cyì¢Œí‘œê°€ ê°™ì„ê²½ìš° ë£¨í”„ë¬¸ í•´ì œ	
 	while(1)
 	{
-		//¿ìÃø¿¡ ÁÂÇ¥°ª,Á¡¼ö ³ªÅ¸³»±â
+		//ìš°ì¸¡ì— ì¢Œí‘œê°’,ì ìˆ˜ ë‚˜íƒ€ë‚´ê¸°
 		gotoxy(43,5);
 		WHITE printf("x = %2d",cx);
 		gotoxy(43,6);
 		WHITE printf("y = %2d",cy);
 		gotoxy(43,7);
-		LIGHT_GREEN printf("Á¡¼ö : %-3d", score);
+		LIGHT_GREEN printf("ì ìˆ˜ : %-3d", score);
 		gotoxy(43,4);
 		 
-		LIGHT_WHITE printf("");//»ö±ò ÃÊ±âÈ­ 
+		LIGHT_WHITE printf("");//ìƒ‰ê¹” ì´ˆê¸°í™” 
 		input = getch();
 		switch(input)
 		{
-			//¹æÇâÅ°¸¦ ÀÔ·Â¹ŞÀ»°æ¿ì, ¸ÅÅ©·ÎÃ³¸®
+			//ë°©í–¥í‚¤ë¥¼ ì…ë ¥ë°›ì„ê²½ìš°, ë§¤í¬ë¡œì²˜ë¦¬
 			case LEFT :  
-						//ÀÌµ¿ÇÒ °÷¿¡ º®(1)ÀÌ ¾øÀ»°æ¿ì
+						//ì´ë™í•  ê³³ì— ë²½(1)ì´ ì—†ì„ê²½ìš°
 						if(map[cy][cx/2-1] == 0 || map[cy][cx/2-1] >= 2)
 						{
-							gotoxy(cx,cy); //Á¹¶ó¸Ç¿¡°Ô Ä¿¼­ ÀÌµ¿ 
+							gotoxy(cx,cy); //ì¡¸ë¼ë§¨ì—ê²Œ ì»¤ì„œ ì´ë™ 
 							if(map[cy][cx/2-1] == 2)
 							{
-								score+=100;//º°ÀÌ ÀÖÀ»°æ¿ì Á¡¼ö Áõ°¡ 
+								score+=100;//ë³„ì´ ìˆì„ê²½ìš° ì ìˆ˜ ì¦ê°€ 
 								map[cy][cx/2-1] = 0;
 							}
 							else if(died == 0 && map[cy][cx/2-1] > 2)
 							{
 								map[cy][cx/2-1] = 0;
-								died++;//µ¶¹ö¼¸ÀÌ ÀÖÀ¸¸é Á×´Â´Ù 
+								died++;//ë…ë²„ì„¯ì´ ìˆìœ¼ë©´ ì£½ëŠ”ë‹¤ 
 							}	
 							
-							//ÇöÀç Ä¿¼­´Â Á¹¶ó¸Ç¿¡°Ô Á¤È®È÷ ÀÌµ¿µÇ¾îÀÖ´Ù. 
-							printf("  ");//ºóÄ­À» Ãâ·ÂÇØ ÇöÀçÀÖ´Â Á¹¶ó¸Ç ¹®ÀÚ¸¦ ¾ø¾Ø´Ù. 
-							//¿ŞÂÊÀ¸·Î ÀÌµ¿ 2Ä­
+							//í˜„ì¬ ì»¤ì„œëŠ” ì¡¸ë¼ë§¨ì—ê²Œ ì •í™•íˆ ì´ë™ë˜ì–´ìˆë‹¤. 
+							printf("  ");//ë¹ˆì¹¸ì„ ì¶œë ¥í•´ í˜„ì¬ìˆëŠ” ì¡¸ë¼ë§¨ ë¬¸ìë¥¼ ì—†ì•¤ë‹¤. 
+							//ì™¼ìª½ìœ¼ë¡œ ì´ë™ 2ì¹¸
 							cx-=2; 
 							gotoxy(cx,cy);
 							printf("%s", player);
-							//Á¹¶ó¸Ç ¹Ù·Î ¹Ø¿¡ Ä¿¼­°¡ ±ôºı°Å¸®¸é º¸±â ÈäÇÏ´Ï ¸Ö¸® º¸³»¹ö¸°´Ù.
+							//ì¡¸ë¼ë§¨ ë°”ë¡œ ë°‘ì— ì»¤ì„œê°€ ê¹œë¹¡ê±°ë¦¬ë©´ ë³´ê¸° í‰í•˜ë‹ˆ ë©€ë¦¬ ë³´ë‚´ë²„ë¦°ë‹¤.
 							gotoxy(40,20);
 						}
 						break;
@@ -194,7 +195,7 @@ int main()
 		else if(cy==20 && cx==2 && score < 500)
 		{
 			gotoxy(2,20);
-			RED printf("Á¡¼ö°¡ ¸ğÀÚ¸¨´Ï´Ù");
+			RED printf("ì ìˆ˜ê°€ ëª¨ìë¦…ë‹ˆë‹¤");
 			//gotoxy(2,19);
 			//printf("  ");
 			cy--;
@@ -213,11 +214,11 @@ int main()
 	system("cls");
 	if(cy==20 && cx==2)
 	{
-		YELLOW printf("\n\nÅ»Ãâ ¼º°ø !\n");
+		YELLOW printf("\n\níƒˆì¶œ ì„±ê³µ !\n");
 	}	
 	else if(died > 0)
 	{
-		RED printf("\n\n\a¾Æ¹«°Å³ª ÁÖ¿ö¸Ô´Ù Á×¾ú´Ù.\n"); 	
+		RED printf("\n\n\aì•„ë¬´ê±°ë‚˜ ì£¼ì›Œë¨¹ë‹¤ ì£½ì—ˆë‹¤.\n"); 	
 	}
 	
 	system("pause"); 
@@ -244,19 +245,19 @@ void map_ptf(int map[20][20], int x, int y)
 						printf("  ");
 						break;
 				case 1 :
-						BLUE_GREEN printf("¡á");
+						BLUE_GREEN printf("â– ");
 						break;
 				case 2 :
-						RED printf("¡Ù");
+						RED printf("â˜†");
 						break; 
 				case 3 :
-						PLUM printf("¢¿");
+						PLUM printf("â™§");
 						break; 
 				case 4 :
-						YELLOW printf("¢½");
+						YELLOW printf("â™¡");
 						break; 
 				case 5 :
-						GREEN printf("¢»");
+						GREEN printf("â™¤");
 						break; 		
 				default : break; 
 			}
